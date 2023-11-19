@@ -1,0 +1,23 @@
+{
+  "kind": "MetricValueList",
+  "apiVersion": "custom.metrics.k8s.io/v1beta2",
+  "metadata": {
+    "selfLink": "/apis/custom.metrics.k8s.io/vbeta2/namespaces/custom-metrics/services/custom-metrics-apiserver/connections-per-second"
+  },
+  "items": [
+    {
+      "describedObject": {
+        "kind": "Service",
+        "namespace": "custom-metrics",
+        "name": "custom-metrics-apiserver",
+        "apiVersion": "/v1"
+      },
+      "metric": {
+        "name": "connections-per-second",
+        "selector": null
+      },
+      "timestamp": "2022-07-03T09:34:41Z",
+      "value": "500m"
+    }
+  ]
+}

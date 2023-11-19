@@ -1,0 +1,19 @@
+# content of the file passed to "--config"
+apiVersion: kubescheduler.config.k8s.io/v1beta2
+kind: KubeSchedulerConfiguration
+clientConnection:
+  kubeconfig: "/etc/kubernetes/scheduler.conf"
+extenders:
+  - urlPrefix: "http://localhost:8888/"
+    filterVerb: "filter"
+    managedResources:
+      - name: "example.com/latency-nanos"
+        ignoredByScheduler: true
+      - name: "example.com/tcp-mbpns"
+        ignoredByScheduler: true
+      - name: "example.com/udp-mbpns"
+        ignoredByScheduler: true
+      - name: "example.com/jitter"
+        ignoredByScheduler: true
+    weight: 1
+    enableHTTPS: false

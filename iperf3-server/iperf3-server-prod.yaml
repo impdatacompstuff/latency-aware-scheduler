@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: iperf3-server
+spec:
+  selector:
+    matchLabels:
+      name: iperf3-server
+  template:
+    metadata:
+      labels:
+        name: iperf3-server
+    spec:       
+      containers:
+        - name: iperf3-server
+          image: obipshawam/iperf3-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5201
+              hostPort: 9999
+              protocol: TCP
+            - containerPort: 5201
+              hostPort: 9999
+              protocol: UDP
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
