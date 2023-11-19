@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-test
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: network-test
+  template:
+    metadata:
+      labels:
+        app: network-test
+    spec:
+      containers:
+      - name: pause
+        image: k8s.gcr.io/pause:3.1
+        resources:
+          requests:
+            example.com/udp-mbpns: 800000
+          limits:
+            example.com/udp-mbpns: 800000
+            
